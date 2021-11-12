@@ -1,2 +1,2 @@
-# comet-1
+# Comet - V1
 Phase 1 of Project Comet - Importing pictures, processing and exporting data to CSV
