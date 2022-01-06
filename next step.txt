@@ -5,3 +5,4 @@ separate image into rectangles
 calculate ratio of keypoints to nonkeypoints
 rank all rectangles and assign position on color spectrum
 create heatmap
+to be implemented in Alpha 2.0
