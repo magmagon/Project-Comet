@@ -1,0 +1,7 @@
+finding density of edges to determine turbulent flow
+
+method 1:
+separate image into rectangles
+calculate ratio of keypoints to nonkeypoints
+rank all rectangles and assign position on color spectrum
+create heatmap
