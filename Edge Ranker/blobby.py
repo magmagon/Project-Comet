@@ -23,11 +23,11 @@ def Alpha():
     #Alpha_ImageSize = Alpha_FileName.resize((1000,1000))
     Alpha_Gray = skimage.color.rgb2gray(Alpha_ImportFile)
     Alpha_log = blob_log(Alpha_Gray, max_sigma=30, num_sigma=10, threshold=.1)
-    Alpha_dog = blob_dog(Alpha_Gray, max_sigma=30, num_sigma=10, threshold=.1)
-    Alpha_doh = blob_doh(Alpha_Gray, max_sigma=30, num_sigma=30, threshold=0.1)
-    skimage.io.imsave('C:/Users/seagu/Pictures/Edge Ranker/temporary/blob_log.jpg', arr=Alpha_log)
-    skimage.io.imsave('C:/Users/seagu/Pictures/Edge Ranker/temporary/blob_log.jpg', arr=Alpha_log)
-    skimage.io.imsave('C:/Users/seagu/Pictures/Edge Ranker/temporary/blob_log.jpg', arr=Alpha_log)
+    Alpha_dog = blob_dog(Alpha_Gray, max_sigma=30, threshold=.1)
+    Alpha_doh = blob_doh(Alpha_Gray, max_sigma=30, threshold=0.1)
+    skimage.io.imsave('C:/Users/seagu/Pictures/Edge Ranker/temporary/blob_log', arr=Alpha_log)
+#    skimage.io.imsave('C:/Users/seagu/Pictures/Edge Ranker/temporary/blob_dog.jpg', arr=Alpha_dog)
+#    skimage.io.imsave('C:/Users/seagu/Pictures/Edge Ranker/temporary/blob_doh.jpg', arr=Alpha_doh)
 
 def Bravo():
     Bravo_ImportFile = skimage.io.imread(fname= 'C:/Users/seagu/Pictures/Edge Ranker/temporary/blob.jpg')
