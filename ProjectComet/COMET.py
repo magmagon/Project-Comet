@@ -9,17 +9,20 @@ from PIL import Image #Image Operations
 
 ###Section 1: Imageprocessor - Imports image and resizes it to 4000x3000 pixels, then turns each picture to gray scale, then runs the canny edge filter
 
-input_dir = 'C:/Users/seagu/Pictures/ProjectComet/ingest/'
-output_dir = 'C:/Users/seagu/Pictures/ProjectComet/temporary/'
+current_dir = os.getcwd()
+input_dir = current_dir + "/ingest"
+output_dir = current_dir + '/temporary'
+
 
 def image_importer(input_dir):
-    List_of_Files = os.listdir("c:/users/seagu/pictures/projectcomet/ingest")
+    os.chdir(input_dir)
+    List_of_Files = os.listdir(input_dir)
     print(List_of_Files)
     for file in List_of_Files:
         try:
             originalImg = cv2.imread(file)
-            print("success 1")
             image_resize(originalImg)
+            print("success 1")
         except ValueError:
             print("File format not valid")
 
@@ -28,18 +31,20 @@ def image_resize(image):
     height_dimension = 3000
     resize_dimension = (width_dimension, height_dimension)
     resized_image = cv2.resize(image, resize_dimension, interpolation = cv2.INTER_LINEAR_EXACT)
-    print("success 2")
     edge_filter(resized_image)
+    print("success 2")
 
 def edge_filter(image):
     edges = cv2.Canny(image, 10,100)
+    os.chdir(output_dir)
     cv2.imwrite(output_dir + str(image) + "EDGE.jpg", edges)
-    print("success 3")
-    processed_image_importer("c:/users/seagu/pictures/projectcomet/temporary")
+    if not cv2.imwrite(output_dir + str(image) + "EDGE.jpg", edges):
+        raise Exception("no work")
+    print(os.getcwd())
+    print(os.listdir(output_dir))
+    #processed_image_importer(output_dir)
 
 ###Section 2: Split - Divides image into 100x100 pixel squares and then analyzes the ratio of edges in the picture and sends results to csv or text file
-input_dir = "C:/Users/seagu/Pictures/ProjectComet/temporary/"
-output_dir = "C:/Users/seagu/Pictures/ProjectComet/temporary/chunks/"
 
 
 def processed_image_importer(input_dir):
